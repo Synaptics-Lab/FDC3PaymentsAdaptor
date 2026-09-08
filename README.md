@@ -1,14 +1,32 @@
+```
+┌────────────────────────────────────────────────────────────────────────────┐
+│  ██╗██████╗ ███╗   ███╗     ██████╗  ██████╗ ██████╗                       │
+│  ██║██╔══██╗████╗ ████║     ██╔══██╗██╔═══██╗██╔══██╗                      │
+│  ██║██████╔╝██╔████╔██║     ██████╔╝██║   ██║██████╔╝                      │
+│  ██║██╔══██╗██║╚██╔╝██║     ██╔══██╗██║   ██║██╔══██╗                      │
+│  ██║██████╔╝██║ ╚═╝ ██║     ██████╔╝╚██████╔╝██████╔╝                      │
+│  ╚═╝╚═════╝ ╚═╝     ╚═╝     ╚═════╝  ╚═════╝ ╚═════╝                       │
+│                                                                            │
+│  FINOS FDC3 2.0  ×  ISO 20022 WIRE  ×  SYNAPTICCHAIN DPI L1                │
+│  OpenEAGO Autonomous Desktop Agent & Institutional Settlement Connector    │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
 # FINOS FDC3 2.0 × SynapticChain DPI — IBM Hackathon Entry
 
 > **Production-ready FINOS FDC3 2.0 client adapter and ISO 20022 wire dispatcher connecting institutional desktop trading applications to the SynapticChain Sovereign Digital Public Infrastructure (DPI) gateway.**
 
 [![FINOS FDC3](https://img.shields.io/badge/FINOS-FDC3%202.0-0033a0?logo=finos)](https://fdc3.finos.org)
-[![ISO 20022](https://img.shields.io/badge/ISO%2020022-pacs.008.001.08-blue)](https://www.iso20022.org)
-[![Conformance Suite](https://img.shields.io/badge/conformance-passing-brightgreen)](package.json)
+[![ISO 20022](https://img.shields.io/badge/ISO%2020022-pacs.008.001.08-0052cc)](https://www.iso20022.org)
+[![IBM Bob](https://img.shields.io/badge/IBM-Bob%20Agent-1f70c1?logo=ibm)](https://github.com/Synaptics-Lab/IBM_BOB_finos_connector)
+[![Citi OpenEAGO](https://img.shields.io/badge/Citi-OpenEAGO%20Phase%203-blueviolet)](https://finos.synapticchain.xyz)
+[![Conformance Suite](https://img.shields.io/badge/conformance-passing-10b981)](package.json)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Node](https://img.shields.io/badge/Node-18%2B-brightgreen?logo=node.js)](https://nodejs.org)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-success)](package.json)
-[![Live Chain](https://img.shields.io/badge/chain-african--alpha--testnet-orange)](https://finos.synapticchain.xyz)
+[![Consensus](https://img.shields.io/badge/consensus-SCBFT%20256--lane-8b5cf6)](https://nodes.synapticchain.xyz)
+[![Live Chain](https://img.shields.io/badge/network-african--alpha--testnet-orange)](https://finos.synapticchain.xyz)
+[![Central Bank Reserve](https://img.shields.io/badge/central%20bank-150M%20ZMW%20(99.91%25)-green)](https://finos.synapticchain.xyz)
+
 
 
 ---
