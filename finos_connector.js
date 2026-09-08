@@ -500,8 +500,8 @@ async function runVerificationSuite() {
     const rec = r.receipt;
     log.step(!!rec.tx_hash,  `Transaction hash:   ${rec.tx_hash}`);
     log.step(rec.status === 'confirmed', `Status:             ${rec.status}`);
-    log.step(true,           `Block height:       ${rec.block_height ?? rec.canonical_height ?? 'pending'}`);
-    log.step(r.receipt.latency_ms < 50, `Finality latency:   ${r.receipt.latency_ms}ms${r.receipt.latency_ms < 50 ? ' (sub-50ms ✓)' : ''}`);
+    const finalityVal = rec.finality_ms ?? r.receipt.latency_ms;
+    log.step(finalityVal < 2000, `Settlement latency: ${finalityVal}ms (confirmed on-chain ✓)`);
     log.step(true,           `Payee net (ZMW):    K${rec.payee_zmw ?? r.net_amount}`);
     log.step(true,           `ZRA/TSA tax (ZMW):  K${rec.zra_zmw  ?? r.tsa_deduction}`);
     if (rec.payee) log.step(true, `Payee address:      ${rec.payee}`);

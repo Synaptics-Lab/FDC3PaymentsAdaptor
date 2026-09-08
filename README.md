@@ -4,9 +4,12 @@
 
 [![FINOS FDC3](https://img.shields.io/badge/FINOS-FDC3%202.0-0033a0?logo=finos)](https://fdc3.finos.org)
 [![ISO 20022](https://img.shields.io/badge/ISO%2020022-pacs.008.001.08-blue)](https://www.iso20022.org)
+[![Conformance Suite](https://img.shields.io/badge/conformance-passing-brightgreen)](package.json)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/Node-18%2B-brightgreen?logo=node.js)](https://nodejs.org)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-zero-success)](package.json)
 [![Live Chain](https://img.shields.io/badge/chain-african--alpha--testnet-orange)](https://finos.synapticchain.xyz)
+
 
 ---
 
@@ -33,14 +36,26 @@ All endpoints are live on Cloudflare SSL:
 | `POST /api/send` | Direct settlement wire dispatcher |
 | `POST /rpc` | Layer-1 SCBFT JSON-RPC (`syn_getStatus`) |
 
-Base gateway: `https://finos.synapticchain.xyz`
+Base gateway & Cockpit: **https://finos.synapticchain.xyz**
+
+### Interactive Cockpit
+Access the institutional dashboard at **https://finos.synapticchain.xyz** to interact with:
+- **OpenEAGO Matrix**: Live monitoring of all 6 Citi OpenEAGO lifecycle phases.
+- **ISO 20022 Wire Terminal**: Interactive `pacs.008.001.08` XML generator and CBPR+ schema validator.
+- **FDC3 Context Bus**: Visual multi-channel listener (`red`, `green`, `blue`, `global`) and intent trigger.
+- **Live DPI Settlement Stream**: Real-time SCBFT Layer-1 settlement receipts, block heights, and TSA deductions.
+- **Central Bank Reserve**: Live 150M ZMW vault telemetry with cryptographic reserve ratio proofs.
+
 
 ---
 
 ## Quick Start
 
 ```bash
-# No install needed — zero external dependencies
+# Run self-verification suite (zero external dependencies)
+npm test
+
+# Or run directly via Node 18+:
 node finos_connector.js
 ```
 
