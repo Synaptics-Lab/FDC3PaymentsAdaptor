@@ -1,1 +1,27 @@
-{ "type": "module" }
+{
+  "name": "@synaptics-lab/finos-openeago-connector",
+  "version": "1.0.0",
+  "description": "FINOS FDC3 2.0 & ISO 20022 OpenEAGO Sovereign Client Connector for SynapticChain Layer-1",
+  "main": "finos_connector.js",
+  "type": "module",
+  "scripts": {
+    "start": "node finos_connector.js",
+    "test": "node finos_connector.js"
+  },
+  "keywords": [
+    "finos",
+    "fdc3",
+    "iso20022",
+    "pacs008",
+    "openeago",
+    "synapticchain",
+    "sovereign-dpi",
+    "ibm-bob"
+  ],
+  "author": "Synaptics Lab & IBM Bob",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Synaptics-Lab/IBM_BOB_finos_connector.git"
+  }
+}
