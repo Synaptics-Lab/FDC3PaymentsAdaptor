@@ -4,15 +4,15 @@
  * FINOS FDC3 2.0 Desktop Agent Adapter — SynapticChain DPI × Citi OpenEAGO Ph-3
  *
  * Drop this module into any FDC3-capable desktop container (OpenFin, Symphony,
- * Bloomberg B-PIPE web adapter) and call `createSynapticAdapter()` to get a
+ * Bloomberg B-PIPE web adapter) and call `createPaymentAdapter()` to get a
  * fully-wired settlement agent.
  *
  * The adapter is also consumable from finos_connector.js (Node 18+) via the
  * re-exported types and builder functions.
  *
  * Usage (OpenFin):
- *   import { createSynapticAdapter } from './fdc3-openeago-adapter';
- *   const adapter = await createSynapticAdapter();
+ *   import { createPaymentAdapter } from './fdc3-openeago-adapter';
+ *   const adapter = await createPaymentAdapter();
  *   await adapter.raiseInitiatePayment({ amount: '500', payee: 'syn1...' });
  *
  * Usage (Bloomberg B-PIPE / headless Node):
@@ -281,10 +281,10 @@ interface Channel {
  *
  * Implements the FDC3 2.0 DesktopAgent interface subset required for
  * payment intent handling. In a real OpenFin / Symphony runtime, replace
- * `new FDC3DesktopAgentBridge()` with the platform's `window.fdc3` object —
+ * `new FDC3PaymentsAdaptor()` with the platform's `window.fdc3` object —
  * the API surface is identical.
  */
-export class FDC3DesktopAgentBridge {
+export class FDC3PaymentsAdaptor {
   private channels  = new Map<FDC3Channel, Channel>();
   private listeners = new Map<string, IntentHandler[]>();
 
@@ -427,7 +427,7 @@ export interface SynapticAdapterOptions {
 }
 
 export interface SynapticAdapter {
-  agent:  FDC3DesktopAgentBridge;
+  agent:  FDC3PaymentsAdaptor;
   client: SynapticChainClient;
   /** Convenience: raise an InitiatePayment intent end-to-end */
   raiseInitiatePayment: (ctx: Omit<FDC3PaymentContext, 'type' | 'instrument'> & Partial<Pick<FDC3PaymentContext, 'instrument'>>) => Promise<WireResult>;
@@ -438,7 +438,7 @@ export interface SynapticAdapter {
  *
  * @example
  * ```ts
- * const adapter = await createSynapticAdapter();
+ * const adapter = await createPaymentAdapter();
  * const result  = await adapter.raiseInitiatePayment({
  *   amount: '500',
  *   payee:  'syn1...',
@@ -446,9 +446,9 @@ export interface SynapticAdapter {
  * console.log(result.receipt.tx_hash);
  * ```
  */
-export async function createSynapticAdapter(opts: SynapticAdapterOptions = {}): Promise<SynapticAdapter> {
+export async function createPaymentAdapter(opts: SynapticAdapterOptions = {}): Promise<SynapticAdapter> {
   const client = new SynapticChainClient(opts.gateway);
-  const agent  = new FDC3DesktopAgentBridge();
+  const agent  = new FDC3PaymentsAdaptor();
   const entity = opts.entity ?? 'FDC3 Desktop Wire via Bob';
 
   /** Core intent handler — ISO 20022 build → validate → L1 dispatch */

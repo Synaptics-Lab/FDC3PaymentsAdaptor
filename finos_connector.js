@@ -269,7 +269,7 @@ function validatePacs008(xml) {
  * call `window.fdc3` or the `@finos/fdc3` npm package — here we implement the
  * same interface so the integration logic is identical and swappable.
  */
-class FDC3DesktopAgentBridge {
+class FDC3PaymentsAdaptor {
   #channels = new Map();
   #intentListeners = new Map();
 
@@ -459,7 +459,7 @@ async function runVerificationSuite() {
     payeeAddress = results.reserve?.reserve_vault;
   }
 
-  /** @type {import('./fdc3-openeago-adapter').FDC3PaymentContext} */
+  /** @type {import('./fdc3-payments-adapter').FDC3PaymentContext} */
   const paymentContext = {
     type   : 'fdc3.paymentContext',
     amount : '100',           // K100 ZMW test wire
@@ -472,7 +472,7 @@ async function runVerificationSuite() {
     },
   };
 
-  const agent = new FDC3DesktopAgentBridge();
+  const agent = new FDC3PaymentsAdaptor();
   agent.addIntentListener('InitiatePayment', handleInitiatePayment);
 
   log.step(true, `FDC3 agent initialised — channels: red, green, blue, global`);
@@ -535,7 +535,7 @@ async function runVerificationSuite() {
 async function startIntentBusDaemon() {
   log.banner('FINOS FDC3 2.0 Intent Bus — Daemon Mode');
 
-  const agent = new FDC3DesktopAgentBridge();
+  const agent = new FDC3PaymentsAdaptor();
   agent.addIntentListener('InitiatePayment', async (ctx) => {
     log.info('Received FDC3 InitiatePayment from desktop application');
     try {
